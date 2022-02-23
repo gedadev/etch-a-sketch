@@ -8,7 +8,7 @@ console.log(gridSize);
 
 container.setAttribute('style', `grid-template-columns: repeat(${gridSize}, ${itemSize}px);`);
 
-for(let i = 0; i < 256; i++){
+for(let i = 0; i < Math.pow(gridSize, 2); i++){
     const pixel = document.createElement('div');
     pixel.style.height = `${itemSize}px`;
     pixel.className = "pixel";

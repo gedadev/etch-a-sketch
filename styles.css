@@ -5,11 +5,15 @@ body {
 .pixel {
     border-style: solid;
     border-width: 1px;
-    border-color: darkgray;
+    border-color: rgb(184, 184, 184);
 }
 
 .container {
     border-style: solid;
     width: 500px;
     display: grid;
+}
+
+.colored {
+    background-color: rgb(0, 0, 0);
 }

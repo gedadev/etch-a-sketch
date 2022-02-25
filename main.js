@@ -21,7 +21,8 @@ function generateGrid(gridSize=16){
 
 let grid = document.querySelectorAll('.pixel');
 //Changing the color of the divs
-grid.forEach(pixel => pixel.addEventListener('mouseover', (e) => {
+grid.forEach(pixel => pixel.addEventListener('mouseover', () => {
+    pixel.setAttribute('style', `background-color: #${Math.floor(Math.random()*16777215).toString(16)}`);
     pixel.classList.add('colored');
 }));
 
@@ -29,10 +30,16 @@ grid.forEach(pixel => pixel.addEventListener('mouseover', (e) => {
 const resetButton = document.querySelector('.reset');
 resetButton.addEventListener('click', () => {
     gridSize = prompt('New grid size');
-    grid.forEach(pixel => container.removeChild(pixel));
-    grid = generateGrid(gridSize);
-    grid.forEach(pixel => pixel.addEventListener('mouseover', (e) => {
-        pixel.classList.add('colored');
-    }));
+    if(gridSize < 100){
+        grid.forEach(pixel => container.removeChild(pixel));
+        grid = generateGrid(gridSize);
+        grid.forEach(pixel => pixel.addEventListener('mouseover', () => {
+            pixel.setAttribute('style', `background-color: #${Math.floor(Math.random()*16777215).toString(16)}`);
+            pixel.classList.add('colored');
+        }));
+    } else {
+        alert('Grid to large');
+        resetButton.click()
+    }
 });
 
